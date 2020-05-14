@@ -36,7 +36,6 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.найтиФайлВПапкеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.библиотекаЯзыковПрограммированияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.питонToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,6 +46,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.найтиФайлПоПолномуПутиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -130,23 +131,18 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сохранитьToolStripMenuItem,
-            this.найтиФайлВПапкеToolStripMenuItem});
+            this.найтиФайлВПапкеToolStripMenuItem,
+            this.найтиФайлПоПолномуПутиToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
-            // 
-            // сохранитьToolStripMenuItem
-            // 
-            this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
             // 
             // найтиФайлВПапкеToolStripMenuItem
             // 
             this.найтиФайлВПапкеToolStripMenuItem.Name = "найтиФайлВПапкеToolStripMenuItem";
             this.найтиФайлВПапкеToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.найтиФайлВПапкеToolStripMenuItem.Text = "Найти файл в папке";
+            this.найтиФайлВПапкеToolStripMenuItem.Click += new System.EventHandler(this.НайтиФайлВПапкеToolStripMenuItem_Click);
             // 
             // библиотекаЯзыковПрограммированияToolStripMenuItem
             // 
@@ -161,19 +157,20 @@
             // питонToolStripMenuItem
             // 
             this.питонToolStripMenuItem.Name = "питонToolStripMenuItem";
-            this.питонToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.питонToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.питонToolStripMenuItem.Text = "Питон";
+            this.питонToolStripMenuItem.Click += new System.EventHandler(this.ПитонToolStripMenuItem_Click);
             // 
             // сToolStripMenuItem
             // 
             this.сToolStripMenuItem.Name = "сToolStripMenuItem";
-            this.сToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.сToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.сToolStripMenuItem.Text = "С++";
             // 
             // сToolStripMenuItem1
             // 
             this.сToolStripMenuItem1.Name = "сToolStripMenuItem1";
-            this.сToolStripMenuItem1.Size = new System.Drawing.Size(109, 22);
+            this.сToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.сToolStripMenuItem1.Text = "С";
             // 
             // справкаToolStripMenuItem
@@ -188,17 +185,17 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 58);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Добавить слово в текущее дерево";
+            this.button1.Text = "Добавить слово в память";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(411, 224);
+            this.button2.Location = new System.Drawing.Point(410, 226);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(144, 57);
             this.button2.TabIndex = 5;
-            this.button2.Text = "Удалить слово из текущего дерева";
+            this.button2.Text = "Удалить слово из памяти";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
@@ -220,11 +217,26 @@
             this.richTextBox2.TabIndex = 7;
             this.richTextBox2.Text = "";
             // 
+            // найтиФайлПоПолномуПутиToolStripMenuItem
+            // 
+            this.найтиФайлПоПолномуПутиToolStripMenuItem.Name = "найтиФайлПоПолномуПутиToolStripMenuItem";
+            this.найтиФайлПоПолномуПутиToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.найтиФайлПоПолномуПутиToolStripMenuItem.Text = "Найти файл по полному пути";
+            this.найтиФайлПоПолномуПутиToolStripMenuItem.Click += new System.EventHandler(this.НайтиФайлПоПолномуПутиToolStripMenuItem_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(619, 45);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 326);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -253,7 +265,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem найтиФайлВПапкеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem библиотекаЯзыковПрограммированияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem питонToolStripMenuItem;
@@ -264,6 +275,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.ToolStripMenuItem найтиФайлПоПолномуПутиToolStripMenuItem;
+        public System.Windows.Forms.TextBox textBox1;
     }
 }
 

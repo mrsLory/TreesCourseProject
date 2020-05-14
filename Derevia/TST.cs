@@ -8,370 +8,196 @@ namespace Derevia
 {
     class TST
     {
-        public classLeaf cRoot;
-
-        char chrNull = '\0';
-
-        int index = 1;
-
-       int scc = 0;
-
+        ClassLeaf cRoot;
+        readonly char chrNull = '\0';
+        readonly bool index = true;
+        bool add = false;
+        bool poisk_chr = false;
         public TST()
-
-        {           
-
-            cRoot = new classLeaf(chrNull);
+        {
+            cRoot = new ClassLeaf(chrNull);
+        }
+        public void Insert2(string str)
+        {
+            Insert2_insert(ref cRoot, str);
+            add = false;
+        }
+        public int Search2(string str)
+        {
+            return Search2_search(ref cRoot, str);
 
         }
-
-        public void Insert2(ref classLeaf cLeaf, string strWord)
-
+        public int Delete2(string str)
         {
-
+            return Delete2_delete(ref cRoot, str);
+        }
+        public void Insert2_insert(ref ClassLeaf cLeaf, string strWord)
+        {
+            if (add == false)
+            {
+                cLeaf.chr = chrNull;
+                add = true;
+            }
             if (strWord[0] > cLeaf.chr)
-
             {
-
                 if (cLeaf.down != null)
-
                 {
-
-                    if (strWord.Length == 2)
-
-                    {
-
-                        classLeaf cIndex = new classLeaf(index);
-
-                        cLeaf.index = index;
-
-                        index++;
-
-                    }
-
-                    Insert2(ref cLeaf.down, strWord);
-
+                    Insert2_insert(ref cLeaf.down, strWord);
                 }
-
                 else
-
                 {
-
-                    classLeaf cDown = new classLeaf(strWord[0]);
-
+                    ClassLeaf cDown = new ClassLeaf(strWord[0]);
                     cLeaf.down = cDown;
-
+                    if (strWord.Length == 1)
+                    {
+                        Insert2_insert(ref cDown, strWord);
+                        cLeaf.index = index;
+                    }
                     if (strWord.Length > 1)
-
-                        Insert2(ref cDown, strWord);
-
+                        Insert2_insert(ref cDown, strWord);
                 }
-
             }
-
             else if (strWord[0] < cLeaf.chr)
-
             {
-
                 if (cLeaf.up != null)
-
-                    Insert2(ref cLeaf.up, strWord);
-
+                    Insert2_insert(ref cLeaf.up, strWord);
                 else
-
                 {
-
-                    classLeaf cUp = new classLeaf(strWord[0]);
-
+                    ClassLeaf cUp = new ClassLeaf(strWord[0]);
                     cLeaf.up = cUp;
-
+                    if (strWord.Length == 1)
+                    {
+                        Insert2_insert(ref cUp, strWord);
+                        cLeaf.index = index;
+                    }
                     if (strWord.Length > 1)
-
-                        Insert2(ref cUp, strWord);
-
+                        Insert2_insert(ref cUp, strWord);
                 }
-
             }
-
             else if (strWord[0] == cLeaf.chr)
-
             {
-
                 if (strWord.Length > 1)
-
                 {
-
                     if (cLeaf.next != null)
-
                     {
-
-                        if (strWord.Length == 2)
-
-                        {
-
-                            classLeaf cIndex = new classLeaf(index);
-
-                            cLeaf.index = index;
-
-                            index++;
-
-                        }
-
-                        Insert2(ref cLeaf.next, strWord.Substring(1));                
-                     }
-
-
-
+                        if (strWord.Length == 1) cLeaf.index = index;
+                        Insert2_insert(ref cLeaf.next, strWord.Substring(1));
+                    }
                     else
-
                     {
-
-                        classLeaf cNext = new classLeaf(strWord[1]);
-
+                        ClassLeaf cNext = new ClassLeaf(strWord[1]);
                         cLeaf.next = cNext;
 
-                        if (strWord.Length == 2)
-
-                        {
-
-                            classLeaf cIndex = new classLeaf(index);
-
-                            cLeaf.index = index;
-
-                            index++;
-
-                        }
-
-                        Insert2(ref cNext, strWord.Substring(1));
-
+                        Insert2_insert(ref cNext, strWord.Substring(1));
                     }
-
                 }
-
+                if (strWord.Length == 1) cLeaf.index = index;
             }
 
         }
 
-        public int Search2(ref classLeaf cLeaf, string strWord)
 
+        public int Search2_search(ref ClassLeaf cLeaf, string strWord)
         {
-
+            if (poisk_chr == false)
+            {
+                cLeaf.chr = chrNull;
+                poisk_chr = true;
+            }
+            int poisk = 0;
+            if (cLeaf == null)
+            {
+                return poisk;
+            }
             if (strWord[0] > cLeaf.chr)
-
             {
-
                 if (cLeaf.down != null)
-
-                    return Search2(ref cLeaf.down, strWord);
-
+                    return Search2_search(ref cLeaf.down, strWord);
                 else
-
-                    return 0;
-
+                {
+                    poisk_chr = false;
+                    return poisk;
+                }
             }
-
             else if (strWord[0] < cLeaf.chr)
-
             {
-
                 if (cLeaf.up != null)
-
-                    return Search2(ref cLeaf.up, strWord);
-
+                    return Search2_search(ref cLeaf.up, strWord);
                 else
-
-                    return 0;
-
+                {
+                    poisk_chr = false;
+                    return poisk;
+                }
             }
-
             else if (strWord[0] == cLeaf.chr)
-
             {
-
-                if ((strWord.Length == 1) && (cLeaf.index > 0))
-
+                if ((strWord.Length == 1) && (cLeaf.index == true))
                 {
-
-                    return 1;
-
+                    poisk_chr = false;
+                    return poisk + 1;
                 }
-
-                else if ((strWord.Length == 1) && (cLeaf.index == 0))
-
-                    return 0;
-
+                else if ((strWord.Length == 1) && (cLeaf.index == false))
+                {
+                    poisk_chr = false;
+                    return poisk;
+                }
                 else
-
-                    return Search2(ref cLeaf.next, strWord.Substring(1));
-
+                    return Search2_search(ref cLeaf.next, strWord.Substring(1));
             }
-
-            return 0;
+            poisk_chr = false;
+            return poisk;
 
         }
-
-        private void traverseTree(ref classLeaf cLeaf, ref string[] strWords, string strThisWord)
-
+        public int Delete2_delete(ref ClassLeaf cLeaf, string strWord)
         {
-
-            if (cLeaf.up != null)
-
-                traverseTree(ref cLeaf.up, ref strWords, strThisWord);
-
-            string strExtendedWord = strThisWord + cLeaf.chr.ToString();
-
-            if (cLeaf.chr == chrNull)
-
-            {
-
-                Array.Resize<string>(ref strWords, strWords.Length + 1);
-
-                strWords[strWords.Length - 1] = strExtendedWord;
-
-            }
-
-            else
-
-            if (cLeaf.next != null)
-
-                traverseTree(ref cLeaf.next, ref strWords, strExtendedWord);
-
-            if (cLeaf.down != null)
-
-                traverseTree(ref cLeaf.down, ref strWords, strThisWord);
-
-        }
-
-        private void deleteWord(ref classLeaf cLeaf, string strWord)
-
-        {
-
-            if (scc != 0)
-
-            {
-
-                if ((cLeaf.down != null) || (cLeaf.next != null))
-
-                {
-
-                    if ((cLeaf.down != null) && (cLeaf.index == 0) && (strWord.Length != 0))
-
-                    {
-
-                        deleteWord(ref cLeaf.down, strWord.Substring(1));
-
-                    }
-
-                    if ((cLeaf.next != null) && (cLeaf.index == 0) && (strWord.Length != 0))
-
-                    {
-
-                        deleteWord(ref cLeaf.next, strWord.Substring(1));
-
-                    }
-
-                    cLeaf.down = null;
-
-                    cLeaf.up = null;
-
-                    cLeaf.next = null;
-
-                    cLeaf.index = 0;
-
-                }
-
-            }
-
-            scc++;
-
-        }
-
-        public int Delete2(string vvod_slova_na_ydalenie)
-
-        {
-
-            index = 1;
-
-            string[] strWords = new string[0];
-
-            traverseTree(ref cRoot, ref strWords, "");
-
-            var list = strWords.Cast<string>().ToList();
-
-            string slovo_ydalenie = vvod_slova_na_ydalenie + "\0";
-
-            string userRem = list.FirstOrDefault(us => us == slovo_ydalenie);
-
-            foreach (string s in strWords)
-
-                deleteWord(ref cRoot, s);
-
             int delete = 0;
-
-            if (userRem != null)
-
+            if (strWord[0] > cLeaf.chr)
             {
-
-                delete = 1;
-
-                list.Remove(userRem);
-
+                if (cLeaf.down != null)
+                    return Delete2_delete(ref cLeaf.down, strWord);
+                else
+                    return delete;
             }
-
-            //cmbWords.DataSource = list;
-
-            strWords = new string[list.Count];
-
-            for (int i = 0; i < list.Count; i++)
-
+            else if (strWord[0] < cLeaf.chr)
             {
-
-                strWords[i] = list[i];
-
+                if (cLeaf.up != null)
+                    return Delete2_delete(ref cLeaf.up, strWord);
+                else
+                    return delete;
             }
-
-            foreach (string s in strWords)
-
+            else if (strWord[0] == cLeaf.chr)
             {
-
-                Insert2(ref cRoot, s);
-
+                if ((strWord.Length == 1) && (cLeaf.index == true))
+                {
+                    cLeaf.index = false;
+                    return delete + 1;
+                }
+                else if ((strWord.Length == 1) && (cLeaf.index == false))
+                    return delete;
+                else
+                    return Delete2_delete(ref cLeaf.next, strWord.Substring(1));
             }
-
             return delete;
-
         }
+
     }
-
-
-    public class classLeaf
-
+    public class ClassLeaf
     {
-
-        public classLeaf down;
-
-        public classLeaf up;
-
-        public classLeaf next;
-
-        public int index;
-
+        public ClassLeaf down;
+        public ClassLeaf up;
+        public ClassLeaf next;
+        public bool index;
         public char chr;
-
-        public classLeaf(char c)
-
+        public ClassLeaf(char c)
         {
-
             chr = c;
-
         }
-
-        public classLeaf(int i)
-
+        public ClassLeaf(bool i)
         {
-
             index = i;
-
         }
-
     }
 }
+
+
+

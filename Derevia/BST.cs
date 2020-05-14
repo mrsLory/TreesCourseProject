@@ -9,17 +9,20 @@ namespace Derevia
     class BST
     {
 
-        public Node4 root;
+        private Node4 root;
+
         public BST()
         {
             root = null;
         }
+
+
         public void Insert4(string i)
         {
-            Node4 newNode4 = new Node4();
-            newNode4.Data = i;
+            Node4 newNode = new Node4();
+            newNode.Data = i;
             if (root == null)
-                root = newNode4;
+                root = newNode;
             else
             {
                 Node4 current = root;
@@ -32,7 +35,7 @@ namespace Derevia
                         current = current.LeftChild;
                         if (current == null)
                         {
-                            parent.LeftChild = newNode4;
+                            parent.LeftChild = newNode;
                             break;
                         }
                     }
@@ -42,13 +45,15 @@ namespace Derevia
                         current = current.RightChild;
                         if (current == null)
                         {
-                            parent.RightChild = newNode4;
+                            parent.RightChild = newNode;
                             break;
                         }
                     }
                 }
             }
         }
+
+
 
         public int Delete4(string i)
         {
@@ -70,7 +75,7 @@ namespace Derevia
                     if (current == root) { current = null; }
                     else
                     {
-                        if (i == parent.LeftChild.Data) { parent.LeftChild = null; }
+                        if ((parent.LeftChild != null) && (i == parent.LeftChild.Data)) { parent.LeftChild = null; }
                         else { parent.RightChild = null; }
                     }
                 }
@@ -109,6 +114,7 @@ namespace Derevia
             return minv;
         }
 
+
         public int Search4(string i)
         {
             if (root == null) { return 0; }
@@ -122,6 +128,7 @@ namespace Derevia
             if (found == true) { return 1; } else { return 0; }
 
         }
+
 
         private void Repetition(string i, Node4 current, out Node4 newcurrent, out bool found)
         {
@@ -142,8 +149,9 @@ namespace Derevia
             }
             newcurrent = current;
         }
-    
-}
+    }
+
+
 
     public class Node4
     {
