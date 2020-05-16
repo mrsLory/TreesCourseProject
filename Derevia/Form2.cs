@@ -19,7 +19,7 @@ namespace Derevia
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            ((Form1)this.Owner).textBox1.Text = textBox1.Text;
+            
             this.Hide();
             
 

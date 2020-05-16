@@ -35,18 +35,28 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.найтиФайлВПапкеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.библиотекаЯзыковПрограммированияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.питонToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьБиблиотекуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьСловоВБиблиоткуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьБибиотекуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьСловоВБиблиотекуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьСловоИзБиблиотекеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьБиблиотекуToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьФайлВБиблиотекуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.javaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьБиблиотекуToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьСловоВБиблиотекуToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.найтиФайлПоПолномуПутиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -64,7 +74,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Выберите дерево";
-            this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
             // 
             // radioButton4
             // 
@@ -119,7 +128,6 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
             this.библиотекаЯзыковПрограммированияToolStripMenuItem,
             this.справкаToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -128,56 +136,148 @@
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // файлToolStripMenuItem
-            // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.найтиФайлВПапкеToolStripMenuItem,
-            this.найтиФайлПоПолномуПутиToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.файлToolStripMenuItem.Text = "Файл";
-            // 
-            // найтиФайлВПапкеToolStripMenuItem
-            // 
-            this.найтиФайлВПапкеToolStripMenuItem.Name = "найтиФайлВПапкеToolStripMenuItem";
-            this.найтиФайлВПапкеToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.найтиФайлВПапкеToolStripMenuItem.Text = "Найти файл в папке";
-            this.найтиФайлВПапкеToolStripMenuItem.Click += new System.EventHandler(this.НайтиФайлВПапкеToolStripMenuItem_Click);
-            // 
             // библиотекаЯзыковПрограммированияToolStripMenuItem
             // 
             this.библиотекаЯзыковПрограммированияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.питонToolStripMenuItem,
             this.сToolStripMenuItem,
-            this.сToolStripMenuItem1});
+            this.сToolStripMenuItem1,
+            this.javaToolStripMenuItem});
             this.библиотекаЯзыковПрограммированияToolStripMenuItem.Name = "библиотекаЯзыковПрограммированияToolStripMenuItem";
             this.библиотекаЯзыковПрограммированияToolStripMenuItem.Size = new System.Drawing.Size(239, 20);
             this.библиотекаЯзыковПрограммированияToolStripMenuItem.Text = "Библиотека языков программирования";
             // 
             // питонToolStripMenuItem
             // 
+            this.питонToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.загрузитьБиблиотекуToolStripMenuItem,
+            this.добавитьСловоВБиблиоткуToolStripMenuItem,
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem});
             this.питонToolStripMenuItem.Name = "питонToolStripMenuItem";
             this.питонToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.питонToolStripMenuItem.Text = "Питон";
             this.питонToolStripMenuItem.Click += new System.EventHandler(this.ПитонToolStripMenuItem_Click);
             // 
+            // загрузитьБиблиотекуToolStripMenuItem
+            // 
+            this.загрузитьБиблиотекуToolStripMenuItem.Name = "загрузитьБиблиотекуToolStripMenuItem";
+            this.загрузитьБиблиотекуToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.загрузитьБиблиотекуToolStripMenuItem.Text = "Загрузить библиотеку";
+            this.загрузитьБиблиотекуToolStripMenuItem.Click += new System.EventHandler(this.ЗагрузитьБиблиотекуToolStripMenuItem_Click);
+            // 
+            // добавитьСловоВБиблиоткуToolStripMenuItem
+            // 
+            this.добавитьСловоВБиблиоткуToolStripMenuItem.Name = "добавитьСловоВБиблиоткуToolStripMenuItem";
+            this.добавитьСловоВБиблиоткуToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.добавитьСловоВБиблиоткуToolStripMenuItem.Text = "Добавить слово в библиотку";
+            this.добавитьСловоВБиблиоткуToolStripMenuItem.Click += new System.EventHandler(this.ДобавитьСловоВБиблиоткуToolStripMenuItem_Click);
+            // 
+            // удалитьСловоИзБиблиотекиToolStripMenuItem
+            // 
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem.Name = "удалитьСловоИзБиблиотекиToolStripMenuItem";
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem.Text = "Удалить слово из библиотеки";
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem.Click += new System.EventHandler(this.УдалитьСловоИзБиблиотекиToolStripMenuItem_Click);
+            // 
             // сToolStripMenuItem
             // 
+            this.сToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.загрузитьБибиотекуToolStripMenuItem,
+            this.добавитьСловоВБиблиотекуToolStripMenuItem,
+            this.удалитьСловоИзБиблиотекеToolStripMenuItem});
             this.сToolStripMenuItem.Name = "сToolStripMenuItem";
             this.сToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.сToolStripMenuItem.Text = "С++";
+            this.сToolStripMenuItem.Text = "С#";
+            // 
+            // загрузитьБибиотекуToolStripMenuItem
+            // 
+            this.загрузитьБибиотекуToolStripMenuItem.Name = "загрузитьБибиотекуToolStripMenuItem";
+            this.загрузитьБибиотекуToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.загрузитьБибиотекуToolStripMenuItem.Text = "Загрузить библиотеку";
+            this.загрузитьБибиотекуToolStripMenuItem.Click += new System.EventHandler(this.ЗагрузитьБибиотекуToolStripMenuItem_Click);
+            // 
+            // добавитьСловоВБиблиотекуToolStripMenuItem
+            // 
+            this.добавитьСловоВБиблиотекуToolStripMenuItem.Name = "добавитьСловоВБиблиотекуToolStripMenuItem";
+            this.добавитьСловоВБиблиотекуToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.добавитьСловоВБиблиотекуToolStripMenuItem.Text = "Добавить слово в библиотеку";
+            this.добавитьСловоВБиблиотекуToolStripMenuItem.Click += new System.EventHandler(this.ДобавитьСловоВБиблиотекуToolStripMenuItem_Click);
+            // 
+            // удалитьСловоИзБиблиотекеToolStripMenuItem
+            // 
+            this.удалитьСловоИзБиблиотекеToolStripMenuItem.Name = "удалитьСловоИзБиблиотекеToolStripMenuItem";
+            this.удалитьСловоИзБиблиотекеToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.удалитьСловоИзБиблиотекеToolStripMenuItem.Text = "Удалить слово из библиотеки";
+            this.удалитьСловоИзБиблиотекеToolStripMenuItem.Click += new System.EventHandler(this.УдалитьСловоИзБиблиотекеToolStripMenuItem_Click);
             // 
             // сToolStripMenuItem1
             // 
+            this.сToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.загрузитьБиблиотекуToolStripMenuItem1,
+            this.добавитьФайлВБиблиотекуToolStripMenuItem,
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem1});
             this.сToolStripMenuItem1.Name = "сToolStripMenuItem1";
             this.сToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.сToolStripMenuItem1.Text = "С";
+            // 
+            // загрузитьБиблиотекуToolStripMenuItem1
+            // 
+            this.загрузитьБиблиотекуToolStripMenuItem1.Name = "загрузитьБиблиотекуToolStripMenuItem1";
+            this.загрузитьБиблиотекуToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.загрузитьБиблиотекуToolStripMenuItem1.Text = "Загрузить библиотеку";
+            this.загрузитьБиблиотекуToolStripMenuItem1.Click += new System.EventHandler(this.ЗагрузитьБиблиотекуToolStripMenuItem1_Click);
+            // 
+            // добавитьФайлВБиблиотекуToolStripMenuItem
+            // 
+            this.добавитьФайлВБиблиотекуToolStripMenuItem.Name = "добавитьФайлВБиблиотекуToolStripMenuItem";
+            this.добавитьФайлВБиблиотекуToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.добавитьФайлВБиблиотекуToolStripMenuItem.Text = "Добавить слово в библиотеку";
+            this.добавитьФайлВБиблиотекуToolStripMenuItem.Click += new System.EventHandler(this.ДобавитьФайлВБиблиотекуToolStripMenuItem_Click);
+            // 
+            // удалитьСловоИзБиблиотекиToolStripMenuItem1
+            // 
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem1.Name = "удалитьСловоИзБиблиотекиToolStripMenuItem1";
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem1.Text = "Удалить слово из библиотеки";
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem1.Click += new System.EventHandler(this.УдалитьСловоИзБиблиотекиToolStripMenuItem1_Click);
+            // 
+            // javaToolStripMenuItem
+            // 
+            this.javaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.загрузитьБиблиотекуToolStripMenuItem2,
+            this.добавитьСловоВБиблиотекуToolStripMenuItem1,
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem2});
+            this.javaToolStripMenuItem.Name = "javaToolStripMenuItem";
+            this.javaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.javaToolStripMenuItem.Text = "Java";
+            // 
+            // загрузитьБиблиотекуToolStripMenuItem2
+            // 
+            this.загрузитьБиблиотекуToolStripMenuItem2.Name = "загрузитьБиблиотекуToolStripMenuItem2";
+            this.загрузитьБиблиотекуToolStripMenuItem2.Size = new System.Drawing.Size(239, 22);
+            this.загрузитьБиблиотекуToolStripMenuItem2.Text = "Загрузить библиотеку";
+            this.загрузитьБиблиотекуToolStripMenuItem2.Click += new System.EventHandler(this.ЗагрузитьБиблиотекуToolStripMenuItem2_Click);
+            // 
+            // добавитьСловоВБиблиотекуToolStripMenuItem1
+            // 
+            this.добавитьСловоВБиблиотекуToolStripMenuItem1.Name = "добавитьСловоВБиблиотекуToolStripMenuItem1";
+            this.добавитьСловоВБиблиотекуToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.добавитьСловоВБиблиотекуToolStripMenuItem1.Text = "Добавить слово в библиотеку";
+            this.добавитьСловоВБиблиотекуToolStripMenuItem1.Click += new System.EventHandler(this.ДобавитьСловоВБиблиотекуToolStripMenuItem1_Click);
+            // 
+            // удалитьСловоИзБиблиотекиToolStripMenuItem2
+            // 
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem2.Name = "удалитьСловоИзБиблиотекиToolStripMenuItem2";
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem2.Size = new System.Drawing.Size(239, 22);
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem2.Text = "Удалить слово из библиотеки";
+            this.удалитьСловоИзБиблиотекиToolStripMenuItem2.Click += new System.EventHandler(this.УдалитьСловоИзБиблиотекиToolStripMenuItem2_Click);
             // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
             this.справкаToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.справкаToolStripMenuItem.Text = "Справка";
+            this.справкаToolStripMenuItem.Click += new System.EventHandler(this.СправкаToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -216,13 +316,6 @@
             this.richTextBox2.Size = new System.Drawing.Size(47, 29);
             this.richTextBox2.TabIndex = 7;
             this.richTextBox2.Text = "";
-            // 
-            // найтиФайлПоПолномуПутиToolStripMenuItem
-            // 
-            this.найтиФайлПоПолномуПутиToolStripMenuItem.Name = "найтиФайлПоПолномуПутиToolStripMenuItem";
-            this.найтиФайлПоПолномуПутиToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.найтиФайлПоПолномуПутиToolStripMenuItem.Text = "Найти файл по полному пути";
-            this.найтиФайлПоПолномуПутиToolStripMenuItem.Click += new System.EventHandler(this.НайтиФайлПоПолномуПутиToolStripMenuItem_Click);
             // 
             // textBox1
             // 
@@ -264,8 +357,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem найтиФайлВПапкеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem библиотекаЯзыковПрограммированияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem питонToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сToolStripMenuItem;
@@ -275,8 +366,20 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.ToolStripMenuItem найтиФайлПоПолномуПутиToolStripMenuItem;
         public System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьБиблиотекуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьСловоВБиблиоткуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьСловоИзБиблиотекиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьБибиотекуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьСловоВБиблиотекуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьСловоИзБиблиотекеToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьБиблиотекуToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem добавитьФайлВБиблиотекуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem удалитьСловоИзБиблиотекиToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem javaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьБиблиотекуToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem добавитьСловоВБиблиотекуToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem удалитьСловоИзБиблиотекиToolStripMenuItem2;
     }
 }
 

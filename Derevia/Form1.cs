@@ -16,18 +16,42 @@ namespace Derevia
 {
     public partial class Form1 : Form
     {
-        string filename1 = "Python.txt";
+        public void Vstavka(string i)
+        {
+            pt1.Insert1(i.ToLower());
+            pt2.Insert2(i);
+            pt3.Insert3(i);
+            pt4.Insert4(i);
+        }
 
-        string txt="";
+        public void VstavkaFaila(string a)
+        {
+
+            string text;
+            using (StreamReader sr = new StreamReader(a))
+            {
+                text = sr.ReadToEnd();
+            }
+
+            string[] t = text.Split(new char[] {' ', '\n', '_', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                Vstavka(t[i].ToLower());
+            }
+        }
+
+
+        string filename1 = "Python.txt";
+        string filename2 = "C.txt";
+        string filename3 = "CSH.txt";
+        string filename4 = "Java.txt";
 
         public string Adres
         {
             get { return textBox1.Text; }
             set { textBox1.Text = value; }
-        }
-
-        string text; 
-
+        }        
 
         public Form1()
         {
@@ -39,25 +63,16 @@ namespace Derevia
         DST pt3 = new DST();
         BST pt4 = new BST();
 
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void Button1_Click(object sender, EventArgs e)
         {
-            pt1.Insert1(richTextBox1.Text);
-            pt2.Insert2(richTextBox1.Text);
-            pt3.Insert3(richTextBox1.Text);
-            pt4.Insert4(richTextBox1.Text);
-
+            Vstavka(richTextBox1.Text);
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             pt1.Delete1(richTextBox1.Text);
             pt2.Delete2(richTextBox1.Text);
-           // pt3.Delete3(richTextBox1.Text);
+            pt3.Delete3(richTextBox1.Text);
             pt4.Delete4(richTextBox1.Text);
 
         }
@@ -97,61 +112,211 @@ namespace Derevia
 
         }
 
-        private void НайтиФайлВПапкеToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ЗагрузитьБиблиотекуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           /* var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
-            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-            picker.FileTypeFilter.Add(".jpg");
-            picker.FileTypeFilter.Add(".jpeg");
-            picker.FileTypeFilter.Add(".png");
+            
+            pt1 = new Trie();
+            pt2 = new TST();
+            pt3 = new DST();
+            pt4 = new BST();
 
-            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
-            if (file != null)
-            {
-                // Application now has read/write access to the picked file
-                this.textBlock.Text = "Picked photo: " + file.Name;
-            }
-            else
-            {
-                this.textBlock.Text = "Operation cancelled.";
-            }
-            */
+            VstavkaFaila(filename1);
         }
 
-        private void ПитонToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ЗагрузитьБибиотекуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!File.Exists(filename1))
+            pt1 = new Trie();
+            pt2 = new TST();
+            pt3 = new DST();
+            pt4 = new BST();
+
+            VstavkaFaila(filename3);
+        }
+
+        private void ЗагрузитьБиблиотекуToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            pt1 = new Trie();
+            pt2 = new TST();
+            pt3 = new DST();
+            pt4 = new BST();
+
+            VstavkaFaila(filename2);
+        }
+
+        private void ЗагрузитьБиблиотекуToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            pt1 = new Trie();
+            pt2 = new TST();
+            pt3 = new DST();
+            pt4 = new BST();
+
+            VstavkaFaila(filename4);
+        }
+
+        private void ДобавитьСловоВБиблиоткуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string newZapis = richTextBox1.Text;
+            using (StreamWriter sw = new StreamWriter(filename1, true))
             {
-                using (StreamWriter sw = new StreamWriter(filename1, false)) { }
+                sw.WriteLine(newZapis);
             }
+        }
 
+        private void ДобавитьСловоВБиблиотекуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string newZapis = richTextBox1.Text;
+            using (StreamWriter sw = new StreamWriter(filename3, true))
+            {
+                sw.WriteLine(newZapis);
+            }
+        }
 
-            using (StreamReader sr = new StreamReader(filename1))
+        private void ДобавитьФайлВБиблиотекуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string newZapis = richTextBox1.Text;
+            using (StreamWriter sw = new StreamWriter(filename2, true))
+            {
+                sw.WriteLine(newZapis);
+            }
+        }
+
+        private void ДобавитьСловоВБиблиотекуToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            string newZapis = richTextBox1.Text;
+            using (StreamWriter sw = new StreamWriter(filename4, true))
+            {
+                sw.WriteLine(newZapis);
+            }
+        }
+
+        private void УдалитьСловоИзБиблиотекиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Queue q = new Queue();
+            string text;
+
+            using (StreamReader sr = new StreamReader(filename1)) //считываем файл в строку
             {
                 text = sr.ReadToEnd();
             }
 
-            string [] mas  = text.Split(' ', '\n', '_');
+            string[] t = text.Split(new char[] { ' ', '\n', '_', '\t', '\r'}, StringSplitOptions.RemoveEmptyEntries); //сплитим ее в массив
 
-            for ( int i=0; i<mas.Length;i++ )
+            for (int i = 0; i < t.Length; i++)      //переписываем все в очередь кроме удаляемого элемента
             {
-                pt1.Insert1(mas[i]);
-                pt2.Insert2(mas[i]);
-                pt3.Insert3(mas[i]);
-                pt4.Insert4(mas[i]);
-
+                if (!(t[i] == richTextBox1.Text))
+                {
+                    q.Enqueue(t[i]);
+                }
             }
-            
+
+            using (StreamWriter sw = new StreamWriter(filename1, false)) //чистим очередь перезаписываем в файл
+            {
+                while (q.Count != 0)
+                {
+                    sw.WriteLine(q.Dequeue());
+                }
+            }
         }
 
-        private void НайтиФайлПоПолномуПутиToolStripMenuItem_Click(object sender, EventArgs e)
+        private void УдалитьСловоИзБиблиотекеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Queue q = new Queue();
+            string text;
+
+            using (StreamReader sr = new StreamReader(filename3)) //считываем файл в строку
+            {
+                text = sr.ReadToEnd();
+            }
+
+            string[] t = text.Split(new char[] { ' ', '\n', '_', '\t' ,'\r' }, StringSplitOptions.RemoveEmptyEntries); //сплитим ее в массив
+
+            for (int i = 0; i < t.Length; i++)      //переписываем все в очередь кроме удаляемого элемента
+            {
+                if (!(t[i] == richTextBox1.Text))
+                {
+                    q.Enqueue(t[i]);
+                }
+            }
+
+            using (StreamWriter sw = new StreamWriter(filename3, false)) //чистим очередь перезаписываем в файл
+            {
+                while (q.Count != 0)
+                {
+                    sw.WriteLine(q.Dequeue());
+                }
+            }
+        }
+
+        private void УдалитьСловоИзБиблиотекиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            Queue q = new Queue();
+            string text;
+
+            using (StreamReader sr = new StreamReader(filename2)) //считываем файл в строку
+            {
+                text = sr.ReadToEnd();
+            }
+
+            string[] t = text.Split(new char[] { ' ', '\n', '_', '\t', '\r'}, StringSplitOptions.RemoveEmptyEntries); //сплитим ее в массив
+
+            for (int i = 0; i < t.Length; i++)      //переписываем все в очередь кроме удаляемого элемента
+            {
+                if (!(t[i] == richTextBox1.Text))
+                {
+                    q.Enqueue(t[i]);
+                }
+            }
+
+            using (StreamWriter sw = new StreamWriter(filename2, false)) //чистим очередь перезаписываем в файл
+            {
+                while (q.Count != 0)
+                {
+                    sw.WriteLine(q.Dequeue());
+                }
+            }
+        }
+
+        private void УдалитьСловоИзБиблиотекиToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+            Queue q = new Queue();
+            string text;
+
+            using (StreamReader sr = new StreamReader(filename4)) //считываем файл в строку
+            {
+                text = sr.ReadToEnd();
+            }
+
+            string[] t = text.Split(new char[] { ' ', '\n', '_', '\t', '\r' }, StringSplitOptions.RemoveEmptyEntries); //сплитим ее в массив
+
+            for (int i = 0; i < t.Length; i++)      //переписываем все в очередь кроме удаляемого элемента
+            {
+                if (!(t[i] == richTextBox1.Text))
+                {
+                    q.Enqueue(t[i]);
+                }
+            }
+
+            using (StreamWriter sw = new StreamWriter(filename4, false)) //чистим очередь перезаписываем в файл
+            {
+                while (q.Count != 0)
+                {
+                    sw.WriteLine(q.Dequeue());
+                }
+            }
+        }
+
+        private void ПитонToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void СправкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form ifrm = new Form2();
-            ifrm.ShowDialog(this); // отображаем Form2
-            //this.Hide(); // скрываем Form1 (this - текущая форма)
-
-            
+            ifrm.Show(); // отображаем Form2
         }
     }
 }
