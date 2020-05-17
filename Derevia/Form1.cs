@@ -33,7 +33,7 @@ namespace Derevia
                 text = sr.ReadToEnd();
             }
 
-            string[] t = text.Split(new char[] {' ', '\n', '_', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] t = text.Split(new char[] {' ', '\n', '_', '\t', '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < t.Length; i++)
             {
@@ -83,29 +83,37 @@ namespace Derevia
             if (radioButton1.Checked)
                
             {
-                
+                DateTime starttime = DateTime.Now;
                 richTextBox2.Text = pt1.Search1(richTextBox1.Text).ToString();
+                DateTime endtime = DateTime.Now;
+                textBox1.Text=(endtime - starttime).ToString();
             }
 
              if (radioButton2.Checked)
 
              {
-                 pt2.Search2( richTextBox1.Text);
+                 DateTime starttime = DateTime.Now;
                  richTextBox2.Text = pt2.Search2( richTextBox1.Text).ToString();
-             }
+                 DateTime endtime = DateTime.Now;
+                 textBox1.Text = (endtime - starttime).ToString();
+            }
              
             if (radioButton3.Checked)
 
             {
-                pt3.Search3(richTextBox1.Text);
+                DateTime starttime = DateTime.Now;
                 richTextBox2.Text = pt3.Search3(richTextBox1.Text).ToString();
+                DateTime endtime = DateTime.Now;
+                textBox1.Text = (endtime - starttime).ToString();
             }
 
             if (radioButton4.Checked)
 
             {
-                pt4.Search4(richTextBox1.Text);
+                DateTime starttime = DateTime.Now;
                 richTextBox2.Text = pt4.Search4(richTextBox1.Text).ToString();
+                DateTime endtime = DateTime.Now;
+                textBox1.Text = (endtime - starttime).ToString();
             }
 
 
