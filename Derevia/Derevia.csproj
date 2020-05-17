@@ -93,11 +93,5 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="Tests\C.txt" />
-    <Content Include="Tests\CSH.txt" />
-    <Content Include="Tests\Java.txt" />
-    <Content Include="Tests\Python.txt" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

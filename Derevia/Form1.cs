@@ -40,12 +40,12 @@ namespace Derevia
                 Vstavka(t[i].ToLower());
             }
         }
-
-
-        string filename1 = "Python.txt";
-        string filename2 = "C.txt";
-        string filename3 = "CSH.txt";
-        string filename4 = "Java.txt";
+     
+        string filename1 = "../../Tests/Python.txt";
+        string filename2 = "../../Tests/C.txt";
+        string filename3 = "../../Tests/CSH.txt";
+        string filename4 = "../../Tests/Java.txt";
+        int fals;
 
         public string Adres
         {
@@ -73,7 +73,10 @@ namespace Derevia
             pt1.Delete1(richTextBox1.Text);
             pt2.Delete2(richTextBox1.Text);
             pt3.Delete3(richTextBox1.Text);
-            pt4.Delete4(richTextBox1.Text);
+            fals = pt4.Delete4(richTextBox1.Text);
+
+            if (fals == 0) { MessageBox.Show("Данное слово отсутсвует в дереве"); }
+            else { MessageBox.Show("Данная слово успешно удалено"); }
 
         }
 
@@ -84,8 +87,9 @@ namespace Derevia
                
             {
                 DateTime starttime = DateTime.Now;
-                richTextBox2.Text = pt1.Search1(richTextBox1.Text).ToString();
+                fals = pt1.Search1(richTextBox1.Text);
                 DateTime endtime = DateTime.Now;
+                textBox1.Visible = true;
                 textBox1.Text=(endtime - starttime).ToString();
             }
 
@@ -93,17 +97,19 @@ namespace Derevia
 
              {
                  DateTime starttime = DateTime.Now;
-                 richTextBox2.Text = pt2.Search2( richTextBox1.Text).ToString();
+                fals = pt2.Search2( richTextBox1.Text);
                  DateTime endtime = DateTime.Now;
-                 textBox1.Text = (endtime - starttime).ToString();
+                textBox1.Visible = true;
+                textBox1.Text = (endtime - starttime).ToString();
             }
              
             if (radioButton3.Checked)
 
             {
                 DateTime starttime = DateTime.Now;
-                richTextBox2.Text = pt3.Search3(richTextBox1.Text).ToString();
+                fals = pt3.Search3(richTextBox1.Text);
                 DateTime endtime = DateTime.Now;
+                textBox1.Visible = true;
                 textBox1.Text = (endtime - starttime).ToString();
             }
 
@@ -111,11 +117,14 @@ namespace Derevia
 
             {
                 DateTime starttime = DateTime.Now;
-                richTextBox2.Text = pt4.Search4(richTextBox1.Text).ToString();
+                fals = pt4.Search4(richTextBox1.Text);
                 DateTime endtime = DateTime.Now;
+                textBox1.Visible = true;
                 textBox1.Text = (endtime - starttime).ToString();
             }
 
+            if (fals==0) { MessageBox.Show("Данное слово отсутсвует в дереве"); }
+            else { MessageBox.Show("Данная слово присутствует в дереве"); }
 
 
         }
@@ -325,6 +334,7 @@ namespace Derevia
         {
             Form ifrm = new Form2();
             ifrm.Show(); // отображаем Form2
+            MessageBox.Show(Directory.GetCurrentDirectory());
         }
     }
 }
