@@ -412,5 +412,10 @@ namespace Derevia
 
             VstavkaFaila(filename8);
         }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 }

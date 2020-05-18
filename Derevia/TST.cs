@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Derevia
 {
     class TST
@@ -160,13 +161,20 @@ namespace Derevia
             return poisk;
 
         }
+        bool proverka = false;
         public int Delete2_delete(ref ClassLeaf cLeaf, string strWord)
         {
+
             if (strWord == "")
             {
                 return 0;
             }
             int delete = 0;
+            if ((cLeaf.chr == 0) && (strWord != null) && (proverka == true))
+            {
+                proverka = false;
+                return 0;
+            }
             if (strWord[0] == 0)
             {
                 return 0;
@@ -174,14 +182,20 @@ namespace Derevia
             if (strWord[0] > cLeaf.chr)
             {
                 if (cLeaf.down != null)
+                {
+                    proverka = true;
                     return Delete2_delete(ref cLeaf.down, strWord);
+                }
                 else
                     return delete;
             }
             else if (strWord[0] < cLeaf.chr)
             {
                 if (cLeaf.up != null)
+                {
+                    proverka = true;
                     return Delete2_delete(ref cLeaf.up, strWord);
+                }
                 else
                     return delete;
             }
@@ -195,7 +209,10 @@ namespace Derevia
                 else if ((strWord.Length == 1) && (cLeaf.index == false))
                     return delete;
                 else
+                {
+                    proverka = true;
                     return Delete2_delete(ref cLeaf.next, strWord.Substring(1));
+                }
             }
             return delete;
         }
@@ -218,6 +235,7 @@ namespace Derevia
         }
     }
 }
+
 
 
 
