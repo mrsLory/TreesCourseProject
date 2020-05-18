@@ -72,7 +72,7 @@ namespace Derevia
 
                 if ((current.LeftChild == null) && (current.RightChild == null))
                 {
-                    if (current == root) { current = null; }
+                    if (current == root) { root = null; }
                     else
                     {
                         if ((parent.LeftChild != null) && (i == parent.LeftChild.Data)) { parent.LeftChild = null; }
