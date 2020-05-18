@@ -19,11 +19,15 @@ namespace Derevia
         }
         public void Insert2(string str)
         {
+
+
+
             Insert2_insert(ref cRoot, str);
-            add = false;
+
         }
         public int Search2(string str)
         {
+
             return Search2_search(ref cRoot, str);
 
         }
@@ -33,6 +37,10 @@ namespace Derevia
         }
         public void Insert2_insert(ref ClassLeaf cLeaf, string strWord)
         {
+            if (strWord == "")
+            {
+                return;
+            }
             if (add == false)
             {
                 cLeaf.chr = chrNull;
@@ -99,6 +107,10 @@ namespace Derevia
 
         public int Search2_search(ref ClassLeaf cLeaf, string strWord)
         {
+            if (strWord == "")
+            {
+                return 0;
+            }
             if (poisk_chr == false)
             {
                 cLeaf.chr = chrNull;
@@ -150,7 +162,15 @@ namespace Derevia
         }
         public int Delete2_delete(ref ClassLeaf cLeaf, string strWord)
         {
+            if (strWord == "")
+            {
+                return 0;
+            }
             int delete = 0;
+            if (strWord[0] == 0)
+            {
+                return 0;
+            }
             if (strWord[0] > cLeaf.chr)
             {
                 if (cLeaf.down != null)

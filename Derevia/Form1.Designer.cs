@@ -338,24 +338,28 @@
             this.словToolStripMenuItem.Name = "словToolStripMenuItem";
             this.словToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.словToolStripMenuItem.Text = "100 слов";
+            this.словToolStripMenuItem.Click += new System.EventHandler(this.СловToolStripMenuItem_Click);
             // 
             // словToolStripMenuItem1
             // 
             this.словToolStripMenuItem1.Name = "словToolStripMenuItem1";
             this.словToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.словToolStripMenuItem1.Text = "1 000 слов";
+            this.словToolStripMenuItem1.Click += new System.EventHandler(this.СловToolStripMenuItem1_Click);
             // 
             // словToolStripMenuItem2
             // 
             this.словToolStripMenuItem2.Name = "словToolStripMenuItem2";
             this.словToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.словToolStripMenuItem2.Text = "10 000 слов";
+            this.словToolStripMenuItem2.Click += new System.EventHandler(this.СловToolStripMenuItem2_Click);
             // 
             // словToolStripMenuItem3
             // 
             this.словToolStripMenuItem3.Name = "словToolStripMenuItem3";
             this.словToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.словToolStripMenuItem3.Text = "100 000 слов";
+            this.словToolStripMenuItem3.Click += new System.EventHandler(this.СловToolStripMenuItem3_Click);
             // 
             // Form1
             // 

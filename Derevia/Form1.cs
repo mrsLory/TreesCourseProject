@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Derevia;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics; 
 
 
 namespace Derevia
@@ -33,7 +34,7 @@ namespace Derevia
                 text = sr.ReadToEnd();
             }
 
-            string[] t = text.Split(new char[] {' ', '\n', '_', '\t', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] t = text.Split(new char[] {' ', '\n', '_', '\t', '\r', '-' }, StringSplitOptions.RemoveEmptyEntries);
 
             for (int i = 0; i < t.Length; i++)
             {
@@ -45,6 +46,10 @@ namespace Derevia
         string filename2 = "../../Tests/C.txt";
         string filename3 = "../../Tests/CSH.txt";
         string filename4 = "../../Tests/Java.txt";
+        string filename5 = "../../Tests/100000.txt";
+        string filename6 = "../../Tests/10000.txt";
+        string filename7 = "../../Tests/1000.txt";
+        string filename8 = "../../Tests/100.txt";
         int fals;
 
         public string Adres
@@ -82,6 +87,7 @@ namespace Derevia
 
         private void Button3_Click(object sender, EventArgs e)
         {
+           
             
             if (radioButton1.Checked)
                
@@ -122,7 +128,7 @@ namespace Derevia
                 textBox1.Visible = true;
                 textBox1.Text = (endtime - starttime).ToString();
             }
-
+           
             if (fals==0) { MessageBox.Show("Данное слово отсутсвует в дереве"); }
             else { MessageBox.Show("Данная слово присутствует в дереве"); }
 
@@ -335,6 +341,47 @@ namespace Derevia
             Form ifrm = new Form2();
             ifrm.Show(); // отображаем Form2
             MessageBox.Show(Directory.GetCurrentDirectory());
+        }
+
+        private void СловToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            pt1 = new Trie();
+            pt2 = new TST();
+            pt3 = new DST();
+            pt4 = new BST();
+
+            VstavkaFaila(filename6);
+        }
+
+        private void СловToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+
+            pt1 = new Trie();
+            pt2 = new TST();
+            pt3 = new DST();
+            pt4 = new BST();
+
+            VstavkaFaila(filename5);
+        }
+
+        private void СловToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            pt1 = new Trie();
+            pt2 = new TST();
+            pt3 = new DST();
+            pt4 = new BST();
+
+            VstavkaFaila(filename7);
+        }
+
+        private void СловToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pt1 = new Trie();
+            pt2 = new TST();
+            pt3 = new DST();
+            pt4 = new BST();
+
+            VstavkaFaila(filename8);
         }
     }
 }
