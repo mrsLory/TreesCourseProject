@@ -369,7 +369,7 @@ namespace Derevia
         {
             Form ifrm = new Form2();
             ifrm.Show(); // отображаем Form2
-            MessageBox.Show(Directory.GetCurrentDirectory());
+         
         }
 
         private void СловToolStripMenuItem2_Click(object sender, EventArgs e)
