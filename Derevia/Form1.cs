@@ -10,13 +10,19 @@ using System.Threading.Tasks;
 using Derevia;
 using System.IO;
 using System.Windows.Forms;
-using System.Diagnostics; 
+using System.Text.RegularExpressions; 
 
 
 namespace Derevia
 {
     public partial class Form1 : Form
     {
+        public static bool StringIsValid(string str)
+        {
+            return !string.IsNullOrEmpty(str) && !Regex.IsMatch(str, @"[^a-z]");
+        }
+
+
         public void Vstavka(string i)
         {
             pt1.Insert1(i.ToLower());
@@ -70,7 +76,10 @@ namespace Derevia
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            if (StringIsValid(richTextBox1.Text.ToLower()))
             Vstavka(richTextBox1.Text);
+            else { MessageBox.Show("Вводимая строка должна содержать только буквы латинского алфавита"); }
+
         }
 
         private void Button2_Click(object sender, EventArgs e)
@@ -81,7 +90,7 @@ namespace Derevia
             fals = pt4.Delete4(richTextBox1.Text);
 
             if (fals == 0) { MessageBox.Show("Данное слово отсутсвует в дереве"); }
-            else { MessageBox.Show("Данная слово успешно удалено"); }
+            else { MessageBox.Show("Данное слово успешно удалено"); }
 
         }
 
@@ -178,38 +187,58 @@ namespace Derevia
 
         private void ДобавитьСловоВБиблиоткуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string newZapis = richTextBox1.Text;
-            using (StreamWriter sw = new StreamWriter(filename1, true))
+            if (StringIsValid(richTextBox1.Text.ToLower()))
             {
-                sw.WriteLine(newZapis);
+                string newZapis = richTextBox1.Text.ToLower();
+                using (StreamWriter sw = new StreamWriter(filename1, true))
+                {
+                    sw.WriteLine(newZapis);
+                }
             }
+            else { MessageBox.Show("Вводимая строка должна содержать только буквы латинского алфавита"); }
+
         }
 
         private void ДобавитьСловоВБиблиотекуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string newZapis = richTextBox1.Text;
-            using (StreamWriter sw = new StreamWriter(filename3, true))
+            if (StringIsValid(richTextBox1.Text.ToLower()))
             {
-                sw.WriteLine(newZapis);
+                string newZapis = richTextBox1.Text;
+                using (StreamWriter sw = new StreamWriter(filename3, true))
+                {
+                    sw.WriteLine(newZapis);
+                }
             }
+            else { MessageBox.Show("Вводимая строка должна содержать только буквы латинского алфавита"); }
+
         }
 
         private void ДобавитьФайлВБиблиотекуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string newZapis = richTextBox1.Text;
-            using (StreamWriter sw = new StreamWriter(filename2, true))
+            if (StringIsValid(richTextBox1.Text.ToLower()))
             {
-                sw.WriteLine(newZapis);
+                string newZapis = richTextBox1.Text;
+                using (StreamWriter sw = new StreamWriter(filename2, true))
+                {
+                    sw.WriteLine(newZapis);
+                }
             }
+            else { MessageBox.Show("Вводимая строка должна содержать только буквы латинского алфавита"); }
+
         }
 
         private void ДобавитьСловоВБиблиотекуToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            string newZapis = richTextBox1.Text;
-            using (StreamWriter sw = new StreamWriter(filename4, true))
+            if (StringIsValid(richTextBox1.Text.ToLower()))
             {
-                sw.WriteLine(newZapis);
+                string newZapis = richTextBox1.Text;
+                using (StreamWriter sw = new StreamWriter(filename4, true))
+                {
+                    sw.WriteLine(newZapis);
+                }
             }
+            else { MessageBox.Show("Вводимая строка должна содержать только буквы латинского алфавита"); }
+
         }
 
         private void УдалитьСловоИзБиблиотекиToolStripMenuItem_Click(object sender, EventArgs e)
