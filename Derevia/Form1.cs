@@ -89,7 +89,7 @@ namespace Derevia
             pt3.Delete3(richTextBox1.Text);
             fals = pt4.Delete4(richTextBox1.Text);
 
-            if (fals == 0) { MessageBox.Show("Данное слово отсутсвует в дереве"); }
+            if (fals == 0) { MessageBox.Show("Данное слово отсутствует в дереве"); }
             else { MessageBox.Show("Данное слово успешно удалено"); }
 
         }
