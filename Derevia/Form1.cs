@@ -101,41 +101,84 @@ namespace Derevia
             if (radioButton1.Checked)
                
             {
-                DateTime starttime = DateTime.Now;
-                fals = pt1.Search1(richTextBox1.Text);
-                DateTime endtime = DateTime.Now;
+                var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
+                pt1.Search1(richTextBox1.Text);
+                for (int i = 0; i<2500; i++)
+                {
+                    fals = pt1.Search1(richTextBox1.Text);
+                }
+                
+                elapsedTime.Stop();
                 textBox1.Visible = true;
-                textBox1.Text=(endtime - starttime).ToString();
+                textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds/2500).ToString());
             }
 
              if (radioButton2.Checked)
 
              {
+                /*
                  DateTime starttime = DateTime.Now;
                 fals = pt2.Search2( richTextBox1.Text);
                  DateTime endtime = DateTime.Now;
                 textBox1.Visible = true;
                 textBox1.Text = (endtime - starttime).ToString();
+                */
+
+                var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
+                pt2.Search2(richTextBox1.Text);
+                for (int i = 0; i < 2500; i++)
+                {
+                    fals = pt2.Search2(richTextBox1.Text);
+                }
+                elapsedTime.Stop();
+                textBox1.Visible = true;
+                textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
             }
              
             if (radioButton3.Checked)
 
             {
+                /*
                 DateTime starttime = DateTime.Now;
                 fals = pt3.Search3(richTextBox1.Text);
                 DateTime endtime = DateTime.Now;
                 textBox1.Visible = true;
                 textBox1.Text = (endtime - starttime).ToString();
+                */
+
+                var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
+                pt3.Search3(richTextBox1.Text);
+                for (int i = 0; i < 2500; i++)
+                {
+                    fals = pt3.Search3(richTextBox1.Text);
+                }
+                elapsedTime.Stop();
+                textBox1.Visible = true;
+                textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
+
+
             }
 
             if (radioButton4.Checked)
 
             {
+                /*
                 DateTime starttime = DateTime.Now;
                 fals = pt4.Search4(richTextBox1.Text);
                 DateTime endtime = DateTime.Now;
                 textBox1.Visible = true;
                 textBox1.Text = (endtime - starttime).ToString();
+                */
+
+                var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
+                pt4.Search4(richTextBox1.Text);
+                for (int i = 0; i < 2500; i++)
+                {
+                    fals = pt4.Search4(richTextBox1.Text);
+                }
+                elapsedTime.Stop();
+                textBox1.Visible = true;
+                textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
             }
            
             if (fals==0) { MessageBox.Show("Данное слово отсутсвует в дереве"); }
