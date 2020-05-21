@@ -22,17 +22,24 @@ namespace Derevia
 
         }
 
-        public void Insert3(string keyword) // вставка
+
+
+
+
+
+
+
+        public void Insert3(string keyword)
 
         {
 
-            Node3 newNode3 = new Node3();
+            Node3 newNode = new Node3();
 
-            newNode3.Key = keyword;
+            newNode.Key = keyword;
 
             if (root == null)
 
-                root = newNode3;
+                root = newNode;
 
             else
 
@@ -78,57 +85,67 @@ namespace Derevia
 
                     parent = current;
 
-                    if (arrayBits[n] == 0)
+                    if (current.Key == keyword)
+
+                        break;
+
+                    else
 
                     {
 
-                        current = current.Left;
-
-                        if (current == null)
+                        if (arrayBits[n] == 0)
 
                         {
 
-                            parent.Left = newNode3;
+                            current = current.Left;
 
-                            parent.Left.Key = keyword;
+                            if (current == null)
 
-                            break;
+                            {
+
+                                parent.Left = newNode;
+
+                                parent.Left.Key = keyword;
+
+                                break;
+
+                            }
+
+                            else if (current != null)
+
+                                continue;
+
+                            else if (current.Key == keyword)
+
+                                break;
 
                         }
 
-                        else if (current != null)
-
-                            continue;
-
-                        else if (current.Key == keyword)
-
-                            break;
-
-                    }
-
-                    else if (arrayBits[n] == 1)
-
-                    {
-
-                        current = current.Right;
-
-                        if (current == null)
+                        else if (arrayBits[n] == 1)
 
                         {
 
-                            parent.Right = newNode3;
+                            current = current.Right;
 
-                            parent.Right.Key = keyword;
+                            if (current == null)
 
-                            break;
+                            {
+
+                                parent.Right = newNode;
+
+                                parent.Right.Key = keyword;
+
+                                break;
+
+                            }
+
+                            else if (current != null) continue;
+
+                            else if (current.Key == keyword)
+
+                                break;
 
                         }
-
-                        else if (current != null) continue;
-
-                        else if (current.Key == keyword)
-
-                            break;
 
                     }
 
@@ -137,6 +154,7 @@ namespace Derevia
             }
 
         }
+
 
         public int Search3(string keyword) // поиск
 

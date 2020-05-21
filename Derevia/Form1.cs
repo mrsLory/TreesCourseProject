@@ -66,6 +66,7 @@ namespace Derevia
 
         public Form1()
         {
+            MessageBox.Show("Добро пожаловать в программу, предназначенную для работы с деревьями. Вы можете добавлять, удалять и искать слова, загружать готовые библиотеки и словари, и работать с ними. Если у вас появился вопрос, связанный с работой программы, вы можете найти на него ответ в 'Справке', кнопка вызова которой находится в правой верхней часте программы. Внимание! Помните, программа может взаимодействовать только со словами, написанными только английскими буквами, без любых знаков и пробелов.");
             InitializeComponent();
         }
 
@@ -77,7 +78,12 @@ namespace Derevia
         private void Button1_Click(object sender, EventArgs e)
         {
             if (StringIsValid(richTextBox1.Text.ToLower()))
-            Vstavka(richTextBox1.Text);
+            {
+                MessageBox.Show("Данное слово успешно добавлено");
+
+                Vstavka(richTextBox1.Text.ToLower());
+            }
+
             else { MessageBox.Show("Вводимая строка должна содержать только буквы латинского алфавита"); }
 
         }
@@ -96,94 +102,98 @@ namespace Derevia
 
         private void Button3_Click(object sender, EventArgs e)
         {
-           
-            
-            if (radioButton1.Checked)
-               
+            if (StringIsValid(richTextBox1.Text.ToLower()))
             {
-                var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
-                pt1.Search1(richTextBox1.Text);
-                for (int i = 0; i<2500; i++)
+
+                if (radioButton1.Checked)
+
                 {
-                    fals = pt1.Search1(richTextBox1.Text);
+                    var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
+
+                    for (int i = 0; i < 2500; i++)
+                    {
+                        fals = pt1.Search1(richTextBox1.Text);
+                    }
+
+                    elapsedTime.Stop();
+                    textBox1.Visible = true;
+                    textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
                 }
-                
-                elapsedTime.Stop();
-                textBox1.Visible = true;
-                textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds/2500).ToString());
-            }
 
-             if (radioButton2.Checked)
+                if (radioButton2.Checked)
 
-             {
-                /*
-                 DateTime starttime = DateTime.Now;
-                fals = pt2.Search2( richTextBox1.Text);
-                 DateTime endtime = DateTime.Now;
-                textBox1.Visible = true;
-                textBox1.Text = (endtime - starttime).ToString();
-                */
-
-                var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
-                pt2.Search2(richTextBox1.Text);
-                for (int i = 0; i < 2500; i++)
                 {
-                    fals = pt2.Search2(richTextBox1.Text);
+                    /*
+                     DateTime starttime = DateTime.Now;
+                    fals = pt2.Search2( richTextBox1.Text);
+                     DateTime endtime = DateTime.Now;
+                    textBox1.Visible = true;
+                    textBox1.Text = (endtime - starttime).ToString();
+                    */
+
+                    var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
+                    pt2.Search2(richTextBox1.Text);
+                    for (int i = 0; i < 2500; i++)
+                    {
+                        fals = pt2.Search2(richTextBox1.Text);
+                    }
+                    elapsedTime.Stop();
+                    textBox1.Visible = true;
+                    textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
                 }
-                elapsedTime.Stop();
-                textBox1.Visible = true;
-                textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
-            }
-             
-            if (radioButton3.Checked)
 
-            {
-                /*
-                DateTime starttime = DateTime.Now;
-                fals = pt3.Search3(richTextBox1.Text);
-                DateTime endtime = DateTime.Now;
-                textBox1.Visible = true;
-                textBox1.Text = (endtime - starttime).ToString();
-                */
+                if (radioButton3.Checked)
 
-                var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
-                pt3.Search3(richTextBox1.Text);
-                for (int i = 0; i < 2500; i++)
                 {
+                    /*
+                    DateTime starttime = DateTime.Now;
                     fals = pt3.Search3(richTextBox1.Text);
+                    DateTime endtime = DateTime.Now;
+                    textBox1.Visible = true;
+                    textBox1.Text = (endtime - starttime).ToString();
+                    */
+
+                    var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
+                    pt3.Search3(richTextBox1.Text);
+                    for (int i = 0; i < 2500; i++)
+                    {
+                        fals = pt3.Search3(richTextBox1.Text);
+                    }
+                    elapsedTime.Stop();
+                    textBox1.Visible = true;
+                    textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
+
+
                 }
-                elapsedTime.Stop();
-                textBox1.Visible = true;
-                textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
 
+                if (radioButton4.Checked)
 
-            }
-
-            if (radioButton4.Checked)
-
-            {
-                /*
-                DateTime starttime = DateTime.Now;
-                fals = pt4.Search4(richTextBox1.Text);
-                DateTime endtime = DateTime.Now;
-                textBox1.Visible = true;
-                textBox1.Text = (endtime - starttime).ToString();
-                */
-
-                var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
-                pt4.Search4(richTextBox1.Text);
-                for (int i = 0; i < 2500; i++)
                 {
+                    /*
+                    DateTime starttime = DateTime.Now;
                     fals = pt4.Search4(richTextBox1.Text);
-                }
-                elapsedTime.Stop();
-                textBox1.Visible = true;
-                textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
-            }
-           
-            if (fals==0) { MessageBox.Show("Данное слово отсутсвует в дереве"); }
-            else { MessageBox.Show("Данная слово присутствует в дереве"); }
+                    DateTime endtime = DateTime.Now;
+                    textBox1.Visible = true;
+                    textBox1.Text = (endtime - starttime).ToString();
+                    */
 
+                    var elapsedTime = System.Diagnostics.Stopwatch.StartNew();
+                    pt4.Search4(richTextBox1.Text);
+                    for (int i = 0; i < 2500; i++)
+                    {
+                        fals = pt4.Search4(richTextBox1.Text);
+                    }
+                    elapsedTime.Stop();
+                    textBox1.Visible = true;
+                    textBox1.Text = ((elapsedTime.Elapsed.TotalMilliseconds / 2500).ToString());
+                }
+
+                if (fals == 0) { MessageBox.Show("Данное слово отсутсвует в дереве"); }
+                else { MessageBox.Show("Данное слово присутствует в дереве"); }
+
+
+            }
+            else { MessageBox.Show("Вводимая строка должна содержать только буквы латинского алфавита"); }
 
         }
 
