@@ -91,7 +91,8 @@ namespace Derevia
         private void Button2_Click(object sender, EventArgs e)
         {
             Delete bf = new Delete(massivstrok); //создаёт переменную для bloomfilter, который быстро удаляет слова
-            foreach (int index in bf.Contains(richTextBox1.Text)) //если он найдёт слово
+            foreach (int index in bf.Contains(richTextBox1.Text, massivstrok)) // если он найдёт слово
+                                                                               // отправляем массив и слово
             {
                 massivstrok[index] = null; //он его удалит
             }
@@ -458,13 +459,13 @@ namespace Derevia
 
             return res;
         }
-        public IEnumerable<int> Contains(string str)
+        public IEnumerable<int> Contains(string str, string[] mas)
         {
             ulong hash = CalcBloom(str);
-
+            int Length = str.Length;//длина слова, она должна быть ровна найденному слову, иначе оно не удалится
             for (int i = 0; i < del.Length; i++)
             {
-                if ((del[i] & hash) == hash && list[i].Contains(str))
+                if ((del[i] & hash) == hash && list[i].Contains(str) && (Length == mas[i].Length))
                 {
                     yield return i;
                 }
